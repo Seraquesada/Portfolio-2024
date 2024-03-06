@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        font-family:"Actief Grotesque", 'Neue-Montreal', sans-serif;
+    }
+}
+
+html {
+    background-color: rgb(22, 22, 22);
+}
