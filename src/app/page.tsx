@@ -1,11 +1,11 @@
-import Navbar from "@/components/navbar";
+import Navbar from '@/components/navbar'
 
 export default function Home() {
 	return (
-		<main className=" flex min-h-screen flex-col items-center justify-between p-24 ">
-			<div className="flex flex-col">
-				<div className="text-[4rem] font-semibold  text-[#f9f9f9] sm:text-8xl md:text-[10rem] xl:text-[12rem]">
-					<div className="">
+		<main className=" m-10 flex h-screen min-h-screen flex-col lg:m-20">
+			<div className="flex flex-col  ">
+				<div className="text-[4rem]   font-semibold  text-[#f9f9f9] sm:text-8xl md:text-[10rem] xl:text-[12rem]">
+					<div>
 						<span className="hover:pr-1 hover:uppercase  hover:text-cyan-300">
 							S
 						</span>
@@ -52,7 +52,8 @@ export default function Home() {
 						</span>
 					</div>
 				</div>
-				<Navbar/>
+				<Navbar />
+
 			</div>
 		</main>
 	)

@@ -1,8 +1,9 @@
-import NavLink from './navlink'
+import Link from 'next/link'
+import { FC } from 'react'
 
 const dataLink = [
 	{
-		text: 'About Me',
+		text: 'About',
 		href: '',
 	},
 	{
@@ -22,18 +23,23 @@ const dataLink = [
 		href: '',
 	},
 	{
-		text: 'Hire Me',
+		text: 'Hire',
 		href: '',
 	},
 ]
 
-const Navbar = () => {
+const Navbar: FC = () => {
 	return (
-		<nav>
-			<ul className="flex w-full gap-10 pt-20">
+		<nav className="sticky top-0  bg-gray-500  py-8">
+			<ul className="flex flex-wrap sm:gap-2 md:justify-center md:gap-5">
 				{dataLink.map((link) => (
-					<li key={link.text}>
-						<NavLink text={link.text} href={link.href} />
+					<li className="w-max" key={link.text}>
+						<Link
+							className="scroll-smooth border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center hover:text-cyan-500 sm:rounded-xl sm:border sm:p-4 sm:hover:bg-cyan-950 sm:hover:text-[#f9f9f9]"
+							href={link.href}
+						>
+							{link.text}
+						</Link>
 					</li>
 				))}
 			</ul>
