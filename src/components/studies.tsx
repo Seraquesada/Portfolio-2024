@@ -1,6 +1,6 @@
 
 const Studies = () => {
-	return <div>Studies</div>
+	return <div id="studies">Studies</div>
 }
 
 export default Studies

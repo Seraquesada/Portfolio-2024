@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Hire = () => {
-	return <div>Hire</div>
+	return <div id='hire'>Hire</div>
 }
 
 export default Hire

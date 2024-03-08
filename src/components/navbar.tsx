@@ -1,45 +1,52 @@
-import Link from 'next/link'
+"use client"
 import { FC } from 'react'
 
 const dataLink = [
 	{
 		text: 'About',
-		href: '',
+		id: 'about',
 	},
 	{
 		text: 'Works',
-		href: '',
+		id: 'works',
 	},
 	{
 		text: 'Studies',
-		href: '',
+		id: 'studies',
 	},
 	{
 		text: 'Projects',
-		href: '',
+		id: 'projects',
 	},
 	{
 		text: 'Referrals',
-		href: '',
+		id: 'referrals',
 	},
 	{
 		text: 'Hire',
-		href: '',
+		id: 'hire',
 	},
 ]
 
 const Navbar: FC = () => {
+	const handleClick = (id: string) => {
+		const element = document.getElementById(id)
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' })
+		}
+	}
+
 	return (
-		<nav className="sticky top-0  bg-gray-500  py-8">
-			<ul className="flex flex-wrap sm:gap-2 md:justify-center md:gap-5">
+		<nav className="sticky top-0 hidden py-8 sm:flex">
+			<ul className="flex w-full flex-wrap justify-center sm:gap-2 md:gap-5">
 				{dataLink.map((link) => (
 					<li className="w-max" key={link.text}>
-						<Link
-							className="scroll-smooth border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center hover:text-cyan-500 sm:rounded-xl sm:border sm:p-4 sm:hover:bg-cyan-950 sm:hover:text-[#f9f9f9]"
-							href={link.href}
+						<button
+							className="border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center hover:text-cyan-500 sm:rounded-xl sm:border sm:p-4 sm:hover:bg-cyan-950 sm:hover:text-[#f9f9f9]"
+							onClick={() => handleClick(link.id)}
 						>
 							{link.text}
-						</Link>
+						</button>
 					</li>
 				))}
 			</ul>

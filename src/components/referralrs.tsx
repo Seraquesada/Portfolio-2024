@@ -1,5 +1,5 @@
 const Referrals = () => {
-	return <div>Referrals</div>
+	return <div id="referrals">Referrals</div>
 }
 
 export default Referrals
