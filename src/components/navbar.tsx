@@ -37,7 +37,7 @@ const Navbar: FC = () => {
 	}
 
 	return (
-		<nav className="hidden overflow-y-auto py-8 sm:sticky sm:top-0 sm:inline sm:mt-[20rem]">
+		<nav className="hidden overflow-y-auto py-8 sm:sticky sm:top-0 sm:inline sm:mt-[16rem]">
 			<ul className="flex w-full flex-wrap justify-center sm:gap-2 md:gap-5">
 				{dataLink.map((link) => (
 					<li className="w-max" key={link.text}>
