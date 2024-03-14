@@ -1,6 +1,7 @@
 import About from '@/components/about'
 import Navbar from '@/components/navbar'
 import Projects from '@/components/projects'
+import Referrals from '@/components/referralrs'
 import Studies from '@/components/studies'
 import Subtitle from '@/components/subtitle'
 import Title from '@/components/title'
@@ -21,6 +22,7 @@ export default function Home() {
 				<Works />
 				<Studies />
 				<Projects />
+				<Referrals/>
 			</div>
 		</main>
 	)

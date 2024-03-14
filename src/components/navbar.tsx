@@ -19,7 +19,7 @@ const dataLink = [
 		id: 'projects',
 	},
 	{
-		text: 'Referrals',
+		text: 'Referred',
 		id: 'referrals',
 	},
 	{
