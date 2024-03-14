@@ -11,25 +11,26 @@ const Works = () => {
 			<div className="flex flex-col gap-5">
 				<h2 className="text-6xl"> Works</h2>
 				<div className="flex flex-col gap-5 md:flex-row">
-					<div className="flex flex-col gap-2 w-3/5 ">
-						<h4 className="text-3xl font-semibold ">
-							Upler - Front End Developer{' '}
-							<span className="text-md pl-6  font-light">
-								08/2023 - Actual
+					<div className="flex flex-col gap-2  md:w-3/5 ">
+						<div className="flex flex-col justify-start items-end gap-3 sm:flex-row">
+							<h4 className="text-3xl font-semibold ">
+								Upler - Front End Developer
+							</h4>
+							<span className="text-xl font-light  md:pl-6">
+								08/2023 - Current
 							</span>
-							{''}
-						</h4>
+						</div>
+
 						<p className="w-4/5  text-lg">
 							Project initiated for the Ethereum Argentina
-							Buildathon, which is currently still in development.
-							It is a platform that combines a software management
-							solution with a large marketplace where individuals
-							can find all the software they need to work for
-							their projects.
+							Buildathon. It is a platform that combines a
+							software management solution with a large
+							marketplace where individuals can find all the
+							software they need to work for their projects.
 						</p>
 						<p>
 							<span className="font-semibold">
-								Technologic Stack: {''}
+								Technologic Stack:{' '}
 							</span>
 							Next Js, TypeScript, Tailwind and Node Js.
 						</p>
@@ -51,7 +52,7 @@ const Works = () => {
 						</div>
 					</div>
 					<Image
-						className="rounded-md"
+						className="hidden rounded-md md:flex"
 						src="/upler.jpeg"
 						height={100}
 						width={500}

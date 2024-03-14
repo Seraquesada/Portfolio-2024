@@ -11,7 +11,7 @@ const dataLink = [
 		id: 'works',
 	},
 	{
-		text: 'Studies',
+		text: 'Education',
 		id: 'studies',
 	},
 	{

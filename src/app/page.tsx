@@ -1,5 +1,6 @@
 import About from '@/components/about'
 import Navbar from '@/components/navbar'
+import Studies from '@/components/studies'
 import Subtitle from '@/components/subtitle'
 import Title from '@/components/title'
 import Works from '@/components/works'
@@ -17,6 +18,7 @@ export default function Home() {
 				<Navbar />
 				<About />
 				<Works />
+				<Studies/>
 			</div>
 		</main>
 	)
