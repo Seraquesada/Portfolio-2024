@@ -1,7 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import { FC } from 'react'
 
-const Studies = () => {
+const Studies: FC = () => {
 	return (
 		<section
 			id="studies"
@@ -29,43 +28,23 @@ const Studies = () => {
 							second you specialize in the area you choose, in my
 							case Front-End.
 						</p>
-						<p>
-							<span className="font-semibold">
-								Fron-End Stack:{' '}
-							</span>
+						<p className="text-lg">
+							<span className="font-bold">Front-End Stack: </span>
 							HTML, CSS, JavaScript, React Js Next Js, TypeScript
 							and Jest.
 						</p>
-						<p>
-							<span className="font-semibold">
-								Back-End Stack:{' '}
-							</span>
+						<p className="text-lg">
+							<span className="font-bold">Back-End Stack: </span>
 							Java, SpringBoot, Selenium Web Driver.
 						</p>
-						<p>
-							<span className="font-semibold">Data Base: </span>
+						<p className="text-lg">
+							<span className="font-bold">Data Base: </span>
 							MySql.
 						</p>
-						<p>
-							<span className="font-semibold">Work Tools: </span>
+						<p className="text-lg">
+							<span className="font-bold">Work Tools: </span>
 							Git, GitHub and GitLab.
 						</p>
-						<div className="flex gap-5">
-							<Link
-								className="font-semibold uppercase hover:text-cyan-500"
-								href="https://upler.tech/"
-								target="_blamk"
-							>
-								web site
-							</Link>
-							<Link
-								className="font-semibold uppercase hover:text-cyan-500"
-								href="https://upler.tech/"
-								target="_blamk"
-							>
-								Git Hub
-							</Link>
-						</div>
 					</div>
 					{/* <div className="flex w-full flex-col gap-2  md:w-3/5 ">
 						<div className="flex flex-col items-end justify-start gap-3 sm:flex-row">

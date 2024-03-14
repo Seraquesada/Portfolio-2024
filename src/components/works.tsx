@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-const Works = () => {
+const Works: FC = () => {
 	return (
 		<section
 			id="works"
@@ -12,7 +12,7 @@ const Works = () => {
 				<h2 className="text-6xl"> Works</h2>
 				<div className="flex flex-col gap-5 md:flex-row">
 					<div className="flex flex-col gap-2  md:w-3/5 ">
-						<div className="flex flex-col justify-start items-end gap-3 sm:flex-row">
+						<div className="flex flex-col items-end justify-start gap-3 sm:flex-row">
 							<h4 className="text-3xl font-semibold ">
 								Upler - Front End Developer
 							</h4>
@@ -51,15 +51,18 @@ const Works = () => {
 							</Link>
 						</div>
 					</div>
-					<Image
-						className="hidden rounded-md md:flex"
-						src="/upler.jpeg"
-						height={100}
-						width={500}
-						alt="yo"
-						quality={100}
-						priority
-					/>
+					<div className="relative  mx-auto duration-300 hover:opacity-60 ">
+						<Image
+							className="inset-0 z-0 rounded-md  bg-cover bg-center"
+							src={'/upler.jpeg'}
+							alt="upler"
+							height={500}
+							width={500}
+						/>
+						<div className="absolute inset-0 z-10 flex items-center justify-center text-3xl font-bold text-[#f9f9f9]  opacity-0 duration-300 hover:opacity-100 ">
+							Upler @ ETH ARG 2023
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
