@@ -19,7 +19,7 @@ const About: FC = () => {
 					quality={100}
 					priority
 				/>
-				<div className="flex flex-col gap-2 ">
+				<div className="flex flex-col gap-2 justify-center  ">
 					<p className="w-2/4  text-3xl ">
 						{' '}
 						Hello I am Serafin Quesada a {2024 - 2003} years old

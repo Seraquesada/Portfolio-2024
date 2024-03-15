@@ -35,11 +35,15 @@ const Studies: FC = () => {
 						</p>
 						<p className="text-lg">
 							<span className="font-bold">Back-End Stack: </span>
-							Java, SpringBoot, Selenium Web Driver.
+							Java, SpringBoot, Selenium Web Driver and JUnit.
 						</p>
 						<p className="text-lg">
 							<span className="font-bold">Data Base: </span>
 							MySql.
+						</p>
+						<p className="text-lg">
+							<span className="font-bold">Infraestructure Tools: </span>
+							AWS and Docker
 						</p>
 						<p className="text-lg">
 							<span className="font-bold">Work Tools: </span>
