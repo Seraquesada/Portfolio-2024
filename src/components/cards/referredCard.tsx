@@ -17,7 +17,7 @@ const ReferredCard: FC<Props> = ({
 	linkedin,
 }) => {
 	return (
-		<div className="flex h-full flex-col justify-between   border border-red-500">
+		<div className="flex h-full flex-col justify-between">
 			<div className="flex flex-col gap-4">
 				<div>
 					<h4 className="text-xl font-semibold ">{name}</h4>

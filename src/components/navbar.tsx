@@ -42,7 +42,7 @@ const Navbar: FC = () => {
 				{dataLink.map((link) => (
 					<li className="w-max" key={link.text}>
 						<button
-							className="border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center hover:text-cyan-500 sm:rounded-xl sm:border sm:p-4 sm:hover:bg-cyan-950 sm:hover:text-[#f9f9f9]"
+							className="border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center  sm:rounded-xl sm:border sm:p-4 sm:hover:bg-cyan-950 sm:hover:text-[#f9f9f9]"
 							onClick={() => handleClick(link.id)}
 						>
 							{link.text}
