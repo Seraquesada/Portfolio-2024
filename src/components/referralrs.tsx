@@ -1,6 +1,40 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import { FC } from 'react'
+import ReferredCard from './cards/referredCard'
+
+interface Data {
+	name: string
+	position: string
+	description: string
+	github: string
+	linkedin: string
+}
+
+const data: Data[] = [
+	{
+		name: 'Joaquin Marmol',
+		position: 'Frontend Developer',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt veniam similique praesentium nam, dolorem quis assumenda atque officia fugiat expedita tenetur incidunt distinctio dolore earum, tempora facilis. Numquam, in velit.',
+		github: 'https://github.com/JoaquinMarmol',
+		linkedin: 'https://www.linkedin.com/in/joaquin-marmol/',
+	},
+	{
+		name: 'Tomas Bernandin',
+		position: 'Backend Developer',
+		description:
+			'I shared with Serafín my studies at Digital House, in the Certified Tech Developercareer. He was responsible for the FrontEnd area in the final project of the program. He is a great professional and, above all, a great person, always contributing positively to the team.',
+		github: 'https://github.com/JoaquinMarmol',
+		linkedin: 'https://www.linkedin.com/in/joaquin-marmol/',
+	},
+	{
+		name: 'Luca Beati',
+		position: 'Backend Developer',
+		description:
+			'I had the pleasure of working with Serafín	on both integrative projects of the CTD (Certified Tech Developer) career. Both times were a pleasure; he was committed to both the projects and his tasks, met deadlines, but above all, he always had a willingness to work, proactivity, and most important a positive attitude. I hope we cross paths again in future projects!',
+		github: 'https://github.com/LukaBrc',
+		linkedin: 'https://www.linkedin.com/in/lucabp/',
+	},
+]
 
 const Referrals: FC = () => {
 	return (
@@ -15,90 +49,22 @@ const Referrals: FC = () => {
 						<h4 className="text-3xl font-semibold ">
 							Referrals of people who I have work or study with
 						</h4>
-						<div className="flex w-full flex-col mt-5 lg:flex-row gap-5">
-							<div className="flex h-auto w-4/5  flex-col gap-3 border border-red-500">
-								<h4 className="text-xl font-semibold ">
-									Joaquin Marmol
-								</h4>
-								<p className="font-semilight text-lg">
-									Lorem ipsum dolor, sit amet consectetur
-									adipisicing elit. Minima quos dignissimos
-									assumenda eligendi porro pariatur sapiente
-									fuga doloribus impedit dolor magnam,
-									officiis, cumque facere libero ipsum dicta
-									nisi, nam quam?
-								</p>
-								<div className="flex gap-5">
-									<Link
-										href={''}
-										className="font-semibold uppercase hover:text-cyan-500"
-									>
-										git hub
-									</Link>
-									<Link
-										href={''}
-										className="font-semibold uppercase hover:text-cyan-500"
-									>
-										LinkedIn
-									</Link>
-								</div>
-							</div>
-							<div className="flex h-auto w-4/5  flex-col gap-3 border border-red-500">
-								<h4 className="text-xl font-semibold ">
-									Joaquin Marmol
-								</h4>
-								<p className="font-semilight text-lg">
-									Lorem ipsum dolor, sit amet consectetur
-									adipisicing elit. Minima quos dignissimos
-									assumenda eligendi porro pariatur sapiente
-									fuga doloribus impedit dolor magnam,
-									officiis, cumque facere libero ipsum dicta
-									nisi, nam quam?
-								</p>
-								<div className="flex gap-5">
-									<Link
-										href={''}
-										className="font-semibold uppercase hover:text-cyan-500"
-									>
-										git hub
-									</Link>
-									<Link
-										href={''}
-										className="font-semibold uppercase hover:text-cyan-500"
-									>
-										LinkedIn
-									</Link>
-								</div>
-							</div>
-
-							<div className="flex h-auto w-4/5  flex-col gap-3 border border-red-500">
-								<h4 className="text-xl font-semibold ">
-									Joaquin Marmol
-								</h4>
-								<p className="font-semilight text-lg">
-									Lorem ipsum dolor, sit amet consectetur
-									adipisicing elit. Minima quos dignissimos
-									assumenda eligendi porro pariatur sapiente
-									fuga doloribus impedit dolor magnam,
-									officiis, cumque facere libero ipsum dicta
-									nisi, nam quam?
-								</p>
-								<div className="flex gap-5">
-									<Link
-										href={''}
-										className="font-semibold uppercase hover:text-cyan-500"
-									>
-										git hub
-									</Link>
-									<Link
-										href={''}
-										className="font-semibold uppercase hover:text-cyan-500"
-									>
-										LinkedIn
-									</Link>
-								</div>
-							</div>
-						</div>
+						<ol className="mt-5 flex w-full flex-col gap-5 lg:flex-row">
+							{data.map((d) => (
+								<li
+									className="w-4/5 rounded-md bg-slate-600 px-4  py-3"
+									key={d.name}
+								>
+									<ReferredCard
+										name={d.name}
+										position={d.position}
+										description={d.description}
+										github={d.github}
+										linkedin={d.linkedin}
+									/>
+								</li>
+							))}
+						</ol>
 					</div>
 				</div>
 			</div>
