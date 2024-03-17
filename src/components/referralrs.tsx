@@ -10,14 +10,14 @@ interface Data {
 }
 
 const data: Data[] = [
-	{
-		name: 'Joaquin Marmol',
-		position: 'Frontend Developer',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt veniam similique praesentium nam, dolorem quis assumenda atque officia fugiat expedita tenetur incidunt distinctio dolore earum, tempora facilis. Numquam, in velit.',
-		github: 'https://github.com/JoaquinMarmol',
-		linkedin: 'https://www.linkedin.com/in/joaquin-marmol/',
-	},
+	// {
+	// 	name: 'Joaquin Marmol',
+	// 	position: 'Frontend Developer',
+	// 	description:
+	// 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt veniam similique praesentium nam, dolorem quis assumenda atque officia fugiat expedita tenetur incidunt distinctio dolore earum, tempora facilis. Numquam, in velit.',
+	// 	github: 'https://github.com/JoaquinMarmol',
+	// 	linkedin: 'https://www.linkedin.com/in/joaquin-marmol/',
+	// },
 	{
 		name: 'Tomas Bernandin',
 		position: 'Backend Developer',
