@@ -49,10 +49,10 @@ const Referrals: FC = () => {
 						<h4 className="text-3xl font-semibold ">
 							Referrals of people who I have work or study with
 						</h4>
-						<ol className="mt-5 flex w-full flex-col gap-5 lg:flex-row">
+						<ol className="mt-5 flex w-full flex-col gap-8 lg:flex-row">
 							{data.map((d) => (
 								<li
-									className="w-4/5 rounded-md bg-gradient-to-l from-stone-700 to-[70%] to-stone-900 px-4 py-3"
+									className="w-4/5 rounded-md bg-gradient-to-l from-stone-700 to-stone-900 to-[70%] px-4 py-3 "
 									key={d.name}
 								>
 									<ReferredCard
