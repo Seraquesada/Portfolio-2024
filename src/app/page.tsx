@@ -1,4 +1,5 @@
 import About from '@/components/about'
+import Hire from '@/components/hire'
 import Navbar from '@/components/navbar'
 import Projects from '@/components/projects'
 import Referrals from '@/components/referralrs'
@@ -9,7 +10,7 @@ import Works from '@/components/works'
 
 export default function Home() {
 	return (
-		<main className="  mx-10 flex flex-col lg:mx-20 ">
+		<main className=" mx-10 flex flex-col lg:mx-20 ">
 			<div className="flex flex-col">
 				<div className=" flex h-[60vh] flex-col justify-center md:justify-between">
 					<div className="md:pt-[12rem]">
@@ -22,7 +23,8 @@ export default function Home() {
 				<Works />
 				<Studies />
 				<Projects />
-				<Referrals/>
+				<Referrals />
+				<Hire />
 			</div>
 		</main>
 	)
