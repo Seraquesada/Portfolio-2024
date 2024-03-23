@@ -52,7 +52,7 @@ const Referrals: FC = () => {
 						<ol className="mt-5 flex w-full flex-col gap-8 lg:flex-row">
 							{data.map((d) => (
 								<li
-									className="w-4/5 rounded-md bg-gradient-to-l from-stone-700 to-stone-900 to-[70%] px-4 py-3 "
+									className="w-full md:w-4/5 rounded-md bg-gradient-to-l from-stone-700 to-stone-900 to-[70%] px-4 py-3 "
 									key={d.name}
 								>
 									<ReferredCard

@@ -29,7 +29,7 @@ const Hire: FC = () => {
 				<p className="text-xl">Contact me</p>
 			</div>
 
-			<div className="flex flex-col gap-5 md:flex-row">
+			<div className="flex gap-5">
 				<div onClick={handleCopyClick}>
 					<Image
 						src={'/icons/mail.svg'}
@@ -49,7 +49,6 @@ const Hire: FC = () => {
 				/>
 				<Link
 					target="_blank"
-					className="transform duration-300 hover:scale-110"
 					href={'https://www.linkedin.com/in/serafin-quesada/'}
 				>
 					<Image
@@ -57,20 +56,16 @@ const Hire: FC = () => {
 						alt="linkedIn"
 						width={60}
 						height={60}
-						className=""
+						className="transform  duration-300 hover:scale-110"
 					/>
 				</Link>
-				<Link
-					target="_blank"
-					className="transform duration-300 hover:scale-110"
-					href={'https://github.com/Seraquesada'}
-				>
+				<Link target="_blank" href={'https://github.com/Seraquesada'}>
 					<Image
 						src={'/icons/github.svg'}
 						alt="linkedIn"
 						width={60}
 						height={60}
-						className="h-fit rounded-full bg-white"
+						className=" h-fit transform  rounded-full  bg-white duration-300 hover:scale-110"
 					/>
 				</Link>
 			</div>

@@ -12,11 +12,11 @@ const Works: FC = () => {
 				<h2 className="text-6xl"> Works</h2>
 				<div className="flex flex-col gap-5 md:flex-row">
 					<div className="flex flex-col gap-2  md:w-3/5 ">
-						<div className="flex flex-col items-end justify-start gap-3 sm:flex-row">
+						<div className="flex flex-col  gap-3 2xl:flex-row 2xl:items-end">
 							<h4 className="text-3xl font-semibold ">
 								Upler - Front End Developer
 							</h4>
-							<span className="text-xl font-light  md:pl-6">
+							<span className="text-xl font-light ">
 								08/2023 - Current
 							</span>
 						</div>

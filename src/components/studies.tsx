@@ -10,11 +10,11 @@ const Studies: FC = () => {
 				<h2 className="text-6xl"> Education </h2>
 				<div className="flex w-full flex-col gap-5 lg:flex-row ">
 					<div className="flex w-full flex-col gap-2  md:w-3/5 ">
-						<div className="flex flex-col items-end justify-start gap-3 sm:flex-row">
+						<div className="flex flex-col  gap-3 2xl:flex-row 2xl:items-end">
 							<h4 className="text-3xl font-semibold ">
 								Digital House
 							</h4>
-							<span className="text-xl font-light  md:pl-6">
+							<span className="text-xl font-light  2xl:pl-6">
 								2/2022 - 12/2023
 							</span>
 						</div>
@@ -42,7 +42,9 @@ const Studies: FC = () => {
 							MySql.
 						</p>
 						<p className="text-lg">
-							<span className="font-bold">Infraestructure Tools: </span>
+							<span className="font-bold">
+								Infraestructure Tools:{' '}
+							</span>
 							AWS and Docker
 						</p>
 						<p className="text-lg">

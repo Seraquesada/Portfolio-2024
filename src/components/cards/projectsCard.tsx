@@ -19,10 +19,10 @@ const ProjectsCard: FC<Props> = ({
 	github,
 }) => {
 	return (
-		<div className="flex w-full flex-col gap-2  md:w-3/5 ">
-			<div className="flex flex-col items-end justify-start gap-3 sm:flex-row">
+		<div className="flex w-full flex-col gap-2  ">
+			<div className="flex flex-col  gap-3 2xl:flex-row 2xl:items-end">
 				<h4 className="text-3xl font-semibold ">{title}</h4>
-				<span className="text-xl font-light  md:pl-6">{date}</span>
+				<span className="text-xl font-light 2xl:pl-6">{date}</span>
 			</div>
 			<p className="w-4/5  text-lg">{description}</p>
 			<p>

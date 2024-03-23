@@ -11,7 +11,7 @@ const About: FC = () => {
 			<h2 className="text-6xl ">About Me</h2>
 
 			<div className="flex flex-col gap-5 lg:flex-row">
-				<div className="relative mx-auto  w-4/6 duration-300 hover:opacity-60 ">
+				<div className="relative duration-300 hover:opacity-60  xl:w-fit ">
 					<Image
 						className="rounded-md"
 						src="/IMG_6094.jpg"
@@ -29,8 +29,8 @@ const About: FC = () => {
 						Photo By @ttiago.img
 					</Link>
 				</div>
-				<div className="flex flex-col justify-center gap-2  text-3xl ">
-					<p className="w-2/4  ">
+				<div className="flex flex-col justify-start lg:pt-14 gap-2  text-3xl  lg:w-2/4 ">
+					<p className=" ">
 						{' '}
 						Hello I am Serafin Quesada a {2024 - 2003} years old
 						Front-End Developer with 0.5 years of experience born in
