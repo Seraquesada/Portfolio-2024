@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC, useState } from 'react'
 import copy from 'clipboard-copy'
 import toast, { Toaster } from 'react-hot-toast'
+import { FC } from 'react'
 
 const Hire: FC = () => {
 	const text = 'quesada.serafin03@gmail.com'
@@ -12,7 +12,6 @@ const Hire: FC = () => {
 		try {
 			await copy(text)
 			toast.success('Gmail copied to clipboard')
-			// setTimeout(() => setIsCopied(false), 2000)
 		} catch (error) {
 			console.error('Failed to copy text to clipboard', error)
 		}
@@ -23,6 +22,12 @@ const Hire: FC = () => {
 			className="my-10 flex w-full flex-col flex-wrap gap-5 pt-20 text-[#f9f9f9] sm:flex-nowrap"
 		>
 			<h2 className="text-6xl ">Hire Me</h2>
+			<div className="flex flex-col justify-center gap-2  ">
+				<h4 className=" text-3xl">
+					Looking for a Front-End Developer?
+				</h4>
+				<p className="text-xl">Contact me</p>
+			</div>
 
 			<div className="flex flex-col gap-5 md:flex-row">
 				<div onClick={handleCopyClick}>
@@ -43,6 +48,7 @@ const Hire: FC = () => {
 					}}
 				/>
 				<Link
+					target="_blank"
 					className="transform duration-300 hover:scale-110"
 					href={'https://www.linkedin.com/in/serafin-quesada/'}
 				>
@@ -55,6 +61,7 @@ const Hire: FC = () => {
 					/>
 				</Link>
 				<Link
+					target="_blank"
 					className="transform duration-300 hover:scale-110"
 					href={'https://github.com/Seraquesada'}
 				>
