@@ -5,6 +5,10 @@ import copy from 'clipboard-copy'
 import toast, { Toaster } from 'react-hot-toast'
 import { FC } from 'react'
 
+// @ts-ignore
+import pdfFilePath from '../../public/Serafin_Quesada_CV_ING03.pdf'
+console.log('pdfFilePath:', pdfFilePath)
+
 const Hire: FC = () => {
 	const text = 'quesada.serafin03@gmail.com'
 
@@ -29,7 +33,7 @@ const Hire: FC = () => {
 				<p className="text-xl">Contact me</p>
 			</div>
 
-			<div className="flex gap-5">
+			<div className="flex flex-col items-center  gap-5 md:flex-row md:items-start">
 				<div onClick={handleCopyClick}>
 					<Image
 						src={'/icons/mail.svg'}
@@ -68,6 +72,13 @@ const Hire: FC = () => {
 						className=" h-fit transform  rounded-full  bg-white duration-300 hover:scale-110"
 					/>
 				</Link>
+				<a
+					className="rounded-xl border border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center  hover:bg-cyan-950 hover:text-[#f9f9f9] "
+					href={pdfFilePath}
+					download="./Serafin_Quesada_CV_ING03.pdf"
+				>
+					Download CV
+				</a>
 			</div>
 		</section>
 	)
