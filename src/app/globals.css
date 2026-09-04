@@ -1,14 +1,99 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-    html {
-        font-family:"Actief Grotesque", 'Neue-Montreal', sans-serif;
-    }
+/* Class-based dark mode instead of the v4 default (prefers-color-scheme),
+   so the toggle can override the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light: warm cream paper. Dark: warm near-black.
+   Deliberately no #fff / #000 — every pair below stays under a soft,
+   readable contrast rather than a harsh one. */
+:root {
+	color-scheme: light;
+
+	--canvas: #f2ebdd;
+	--surface: #e9e0cd;
+	--surface-strong: #ded2b9;
+	--ink: #2b2721;
+	--ink-muted: #5e564a;
+	--line: #d3c6ad;
+	--accent: #155e75;
+	--accent-strong: #0e7490;
+
+	--title-1: #0891b2;
+	--title-2: #0e7490;
+	--title-3: #155e75;
+	--title-4: #164e63;
+	--title-5: #133f52;
+	--title-6: #103241;
+	--title-7: #0d2630;
 }
 
-html {
-    
-    background-color: rgb(22, 22, 22);
+.dark {
+	color-scheme: dark;
+
+	--canvas: #1c1a16;
+	--surface: #262319;
+	--surface-strong: #332f26;
+	--ink: #efe7d6;
+	--ink-muted: #b3a995;
+	--line: #3c372d;
+	--accent: #6fd0e0;
+	--accent-strong: #a5e8f2;
+
+	--title-1: #a5f3fc;
+	--title-2: #67e8f9;
+	--title-3: #22d3ee;
+	--title-4: #06b6d4;
+	--title-5: #0891b2;
+	--title-6: #0e7490;
+	--title-7: #155e75;
+}
+
+@theme inline {
+	--color-canvas: var(--canvas);
+	--color-surface: var(--surface);
+	--color-surface-strong: var(--surface-strong);
+	--color-ink: var(--ink);
+	--color-ink-muted: var(--ink-muted);
+	--color-line: var(--line);
+	--color-accent: var(--accent);
+	--color-accent-strong: var(--accent-strong);
+
+	--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--font-space-grotesk), var(--font-inter), sans-serif;
+}
+
+@layer base {
+	html {
+		/* Spelled out rather than var(--font-sans): `@theme inline` folds its
+		   values straight into the utilities and never emits them as custom
+		   properties, so --font-sans is not readable here. */
+		font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+		background-color: var(--canvas);
+		color: var(--ink);
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	body {
+		/* Slightly looser than the Tailwind default — long paragraphs of
+		   bio and job history read better with the extra leading. */
+		line-height: 1.65;
+	}
+
+	::selection {
+		background-color: var(--accent);
+		color: var(--canvas);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }

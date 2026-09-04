@@ -1,0 +1,7 @@
+# Lockfiles are generated — let the package manager own their formatting
+pnpm-lock.yaml
+package-lock.json
+
+# CV source documents
+*.md
+!README.md

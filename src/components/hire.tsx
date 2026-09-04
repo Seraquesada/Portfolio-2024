@@ -1,83 +1,86 @@
 'use client'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import copy from 'clipboard-copy'
 import toast, { Toaster } from 'react-hot-toast'
 import { FC } from 'react'
+import { useLanguage } from '@/context/languageProvider'
+import { GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 
-// @ts-ignore
-import pdfFilePath from '../../public/Serafin_Quesada_CV_ING03.pdf'
-console.log('pdfFilePath:', pdfFilePath)
+const EMAIL = 'quesada.serafin03@gmail.com'
+
+const iconClass =
+	'flex h-14 w-14 items-center justify-center rounded-full border border-line bg-surface text-ink transition-colors duration-300 hover:border-accent hover:text-accent'
 
 const Hire: FC = () => {
-	const text = 'quesada.serafin03@gmail.com'
+	const { t } = useLanguage()
 
 	const handleCopyClick = async () => {
 		try {
-			await copy(text)
-			toast.success('Gmail copied to clipboard')
+			await copy(EMAIL)
+			toast.success(t.hire.copied)
 		} catch (error) {
 			console.error('Failed to copy text to clipboard', error)
 		}
 	}
+
 	return (
 		<section
 			id="hire"
-			className="my-10 flex w-full flex-col flex-wrap gap-5 pt-20 text-[#f9f9f9] sm:flex-nowrap"
+			className="my-10 flex w-full flex-col flex-wrap gap-5 pt-20 sm:flex-nowrap"
 		>
-			<h2 className="text-6xl ">Hire Me</h2>
-			<div className="flex flex-col justify-center gap-2  ">
-				<h4 className=" text-3xl">
-					Looking for a Front-End Developer?
-				</h4>
-				<p className="text-xl">Contact me</p>
+			<h2 className="font-display text-5xl md:text-6xl">
+				{t.hire.title}
+			</h2>
+			<div className="flex flex-col justify-center gap-2">
+				<h4 className="text-2xl md:text-3xl">{t.hire.question}</h4>
+				<p className="text-xl text-ink-muted">{t.hire.lead}</p>
 			</div>
 
-			<div className="flex flex-col items-center  gap-5 md:flex-row md:items-start">
-				<div onClick={handleCopyClick}>
-					<Image
-						src={'/icons/mail.svg'}
-						alt="linkedIn"
-						width={60}
-						height={60}
-						className="transform cursor-pointer duration-300 hover:scale-110"
-					/>
-				</div>
+			<div className="flex flex-col items-center gap-5 md:flex-row md:items-start">
+				<button
+					type="button"
+					onClick={handleCopyClick}
+					aria-label={t.hire.copyEmail}
+					title={t.hire.copyEmail}
+					className={iconClass}
+				>
+					<MailIcon className="h-7 w-7" />
+				</button>
 				<Toaster
 					position="bottom-left"
 					toastOptions={{
 						style: {
-							background: '#f9f9f9',
+							background: 'var(--surface)',
+							color: 'var(--ink)',
+							border: '1px solid var(--line)',
 						},
 					}}
 				/>
 				<Link
 					target="_blank"
-					href={'https://www.linkedin.com/in/serafin-quesada/'}
+					rel="noopener noreferrer"
+					aria-label="LinkedIn"
+					href="https://www.linkedin.com/in/serafin-quesada/"
+					className={iconClass}
 				>
-					<Image
-						src={'/icons/linkedIn.svg'}
-						alt="linkedIn"
-						width={60}
-						height={60}
-						className="transform  duration-300 hover:scale-110"
-					/>
+					<LinkedInIcon className="h-6 w-6" />
 				</Link>
-				<Link target="_blank" href={'https://github.com/Seraquesada'}>
-					<Image
-						src={'/icons/github.svg'}
-						alt="linkedIn"
-						width={60}
-						height={60}
-						className=" h-fit transform  rounded-full  bg-white duration-300 hover:scale-110"
-					/>
+				<Link
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub"
+					href="https://github.com/Seraquesada"
+					className={iconClass}
+				>
+					<GitHubIcon className="h-6 w-6" />
 				</Link>
 				<a
-					className="rounded-xl border border-[#f9f9f9] p-4 text-[#f9f9f9] transition-colors duration-700 marker:text-center  hover:bg-cyan-950 hover:text-[#f9f9f9] "
-					href={pdfFilePath}
-					download="./Serafin_Quesada_CV_ING03.pdf"
+					className="rounded-full border border-line bg-surface px-6 py-4 font-semibold transition-colors duration-300 hover:border-accent hover:text-accent"
+					href={t.hire.cvPath}
+					download={t.hire.cvFileName}
 				>
-					Download CV
+					{t.hire.downloadCv}
 				</a>
 			</div>
 		</section>

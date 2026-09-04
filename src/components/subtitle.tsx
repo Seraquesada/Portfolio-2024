@@ -1,7 +1,14 @@
-const Subtitle = () => {
+'use client'
+
+import { FC } from 'react'
+import { useLanguage } from '@/context/languageProvider'
+
+const Subtitle: FC = () => {
+	const { t } = useLanguage()
+
 	return (
-		<h3 className="py-4 pl-1 text-2xl font-light text-[#f9f9f9]">
-			Argentinian Front-End Developer 1 YOE
+		<h3 className="py-4 pl-1 text-xl font-light text-ink-muted sm:text-2xl">
+			{t.subtitle}
 		</h3>
 	)
 }

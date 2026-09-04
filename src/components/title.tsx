@@ -1,55 +1,41 @@
-import React from 'react'
+import { FC } from 'react'
 
-const Title = () => {
+const NAME = ['Serafin', 'Quesada']
+
+/** Hover ramp; each step is a theme-aware CSS variable set in globals.css. */
+const RAMP = [
+	'hover:text-[var(--title-1)]',
+	'hover:text-[var(--title-2)]',
+	'hover:text-[var(--title-3)]',
+	'hover:text-[var(--title-4)]',
+	'hover:text-[var(--title-5)]',
+	'hover:text-[var(--title-6)]',
+	'hover:text-[var(--title-7)]',
+]
+
+const Title: FC = () => {
 	return (
-		<div className="text-[4rem]   font-semibold  text-[#f9f9f9] sm:text-8xl md:text-[10rem] xl:text-[12rem]">
-			<div>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-300">
-					S
+		<h1 className="font-display text-[3.5rem] leading-[0.95] font-semibold tracking-tight sm:text-8xl md:text-[10rem] xl:text-[12rem]">
+			{NAME.map((word, wordIndex) => (
+				<span className="block" key={word}>
+					{word.split('').map((letter, letterIndex) => (
+						<span
+							// Second word sweeps the ramp in reverse.
+							className={`inline-block transition-colors duration-300 hover:pr-1 ${
+								RAMP[
+									wordIndex === 0
+										? letterIndex
+										: RAMP.length - 1 - letterIndex
+								]
+							}`}
+							key={`${word}-${letterIndex}`}
+						>
+							{letter}
+						</span>
+					))}
 				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-400">
-					e
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-500">
-					r
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-600">
-					a
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-700">
-					f
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-900">
-					i
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-950">
-					n
-				</span>
-			</div>
-			<div>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-950">
-					Q
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-900">
-					u
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-800">
-					e
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-700">
-					s
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-600">
-					a
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-400">
-					d
-				</span>
-				<span className="duration-900 transition-colors hover:pr-1  hover:text-cyan-300">
-					a
-				</span>
-			</div>
-		</div>
+			))}
+		</h1>
 	)
 }
 
