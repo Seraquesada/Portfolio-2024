@@ -49,7 +49,7 @@
 				},
 				"sendBody": true,
 				"specifyBody": "json",
-				"jsonBody": "={\n\"query\": {{JSON.stringify($json.output + ' remote OR remoto OR \"Buenos Aires\" -senior -sr -lead -staff -principal -manager -head')}},\n\"time_range\": \"day\",\n\"search_depth\": \"basic\",\n\"include_raw_content\": \"text\",\n\"max_results\" : 20,\n\"include_domains\": [\n    \"lever.co\",\n    \"greenhouse.io\",\n    \"ashbyhq.com\",\n    \"jobs.workable.com\",\n    \"wellfound.com\",\n    \"workatastartup.com\",\n    \"workana.com\",\n    \"getonbrd.com\",\n    \"revelo.com\",\n    \"linkedin.com\",\n    \"builtin.com\",\n    \"indeed.com\",\n    \"glassdoor.com\",\n    \"djinni.co\",\n    \"startupsargentina.com\",\n    \"hiring.cafe\"\n  ]\n}",
+				"jsonBody": "={\n\"query\": {{JSON.stringify($json.output + ' remote Argentina')}},\n\"time_range\": \"week\",\n\"search_depth\": \"basic\",\n\"include_raw_content\": \"text\",\n\"max_results\" : 20,\n\"include_domains\": [\n    \"lever.co\",\n    \"greenhouse.io\",\n    \"ashbyhq.com\",\n    \"jobs.workable.com\",\n    \"wellfound.com\",\n    \"workatastartup.com\",\n    \"workana.com\",\n    \"getonbrd.com\",\n    \"revelo.com\",\n    \"linkedin.com\",\n    \"builtin.com\",\n    \"indeed.com\",\n    \"glassdoor.com\",\n    \"djinni.co\",\n    \"startupsargentina.com\",\n    \"hiring.cafe\",\n    \"ziprecruiter.ie\"\n  ]\n}",
 				"options": {}
 			},
 			"type": "n8n-nodes-base.httpRequest",
@@ -60,6 +60,7 @@
 			],
 			"id": "3839efc5-083a-4a60-8e61-a387d2048ac9",
 			"name": "Tavily Search",
+			"onError": "continueRegularOutput",
 			"credentials": {
 				"httpBearerAuth": {
 					"id": "FUauaBJyHEF7NPN6",
@@ -264,7 +265,7 @@
 						{}
 					]
 				},
-				"jsonBody": "={\n    \"query\": {{JSON.stringify($json.output + ' remote OR remoto OR \"Buenos Aires\" -senior -sr -lead -staff -principal -manager -head')}},\n    \"limit\": 20,\n    \"country\": \"ar\",\n    \"scrapeOptions\": { \"formats\": [\"markdown\"], \"onlyMainContent\": true },\n    \"tbs\": \"qdr:w\",\n    \"includeDomains\": [\n      \"weworkremotely.com\",\n      \"lever.co\",\n      \"greenhouse.io\",\n      \"ashbyhq.com\",\n      \"jobs.workable.com\",\n      \"wellfound.com\",\n      \"workatastartup.com\",\n      \"workana.com\",\n      \"getonbrd.com\",\n      \"builtin.com\",\n      \"justremote.co\",\n      \"arc.dev\",\n      \"unjobs.org\",\n      \"gun.io\",\n      \"indeed.com\",\n      \"glassdoor.com\",\n      \"djinni.co\",\n      \"startupsargentina.com\",\n      \"hiring.cafe\"\n    ]\n}",
+				"jsonBody": "={\n    \"query\": {{JSON.stringify($json.output + ' remote Argentina')}},\n    \"limit\": 20,\n    \"country\": \"AR\",\n    \"scrapeOptions\": { \"formats\": [\"markdown\"], \"onlyMainContent\": true },\n    \"tbs\": \"qdr:w\",\n    \"includeDomains\": [\n      \"weworkremotely.com\",\n      \"lever.co\",\n      \"greenhouse.io\",\n      \"ashbyhq.com\",\n      \"jobs.workable.com\",\n      \"wellfound.com\",\n      \"workatastartup.com\",\n      \"workana.com\",\n      \"getonbrd.com\",\n      \"builtin.com\",\n      \"justremote.co\",\n      \"arc.dev\",\n      \"unjobs.org\",\n      \"gun.io\",\n      \"indeed.com\",\n      \"glassdoor.com\",\n      \"djinni.co\",\n      \"startupsargentina.com\",\n      \"hiring.cafe\",\n      \"ziprecruiter.ie\"\n    ]\n}",
 				"options": {}
 			},
 			"type": "n8n-nodes-base.httpRequest",
@@ -275,6 +276,7 @@
 			],
 			"id": "bb02e5b3-cb75-4170-8f62-56c9585b2a2e",
 			"name": "Firecrawl request",
+			"onError": "continueRegularOutput",
 			"credentials": {
 				"httpBearerAuth": {
 					"id": "XpRGuKtcUwOk7sJx",
@@ -295,7 +297,7 @@
 		},
 		{
 			"parameters": {
-				"jsCode": "// Read the full description of every result and keep only remote roles\n// (or on-site/hybrid in Buenos Aires) asking for at most 4 years of experience.\nconst MAX_YEARS = 4;\nconst raw = [];\n$input.all().forEach(item => {\n  if (item.json.results) raw.push(...item.json.results.map(r => ({ title: r.title, url: r.url, text: r.raw_content || r.content || '' })));\n  if (item.json.data?.web) raw.push(...item.json.data.web.map(r => ({ title: r.title, url: r.url, text: r.markdown || r.description || '' })));\n});\n\nconst seen = new Set();\nconst jobs = raw.filter(j => j.url && !seen.has(j.url) && seen.add(j.url));\n\nconst SENIOR_TITLE = /\\b(senior|sr\\.?|lead|staff|principal|head|manager|director|architect|vp)\\b/i;\nconst REMOTE = /\\b(remote|remoto|remota|work from home|anywhere|distributed)\\b/i;\nconst ONSITE = /\\b(on-?site|onsite|hybrid|h[ií]brido|presencial|in[- ]office)\\b/i;\nconst BUENOS_AIRES = /buenos aires|\\bcaba\\b|\\bgba\\b/i;\n\n// Lowest year count of every \"N years of experience\" / \"N-M years\" requirement found\nfunction requiredYears(text) {\n  const found = [];\n  const re = /(\\d{1,2})\\s*(?:\\+|(?:-|–|to|a)\\s*\\d{1,2})?\\s*\\+?\\s*(?:years?|yrs?|a[ñn]os)/gi;\n  let m;\n  while ((m = re.exec(text))) {\n    const ctx = text.slice(Math.max(0, m.index - 80), m.index + m[0].length + 80);\n    if (/experien|exp\\.|background|proven|track record|hands-on/i.test(ctx)) found.push(Number(m[1]));\n  }\n  return found;\n}\n\nconst kept = [];\nfor (const j of jobs) {\n  const text = (j.title + '\\n' + j.text).slice(0, 60000);\n  if (SENIOR_TITLE.test(j.title)) continue;\n  if (/\\b(senior|sr\\.)\\s+(level|engineer|developer)/i.test(text.slice(0, 1500))) continue;\n  const years = requiredYears(text);\n  if (years.length && Math.max(...years) > MAX_YEARS) continue;\n  if (years.length && Math.min(...years) > MAX_YEARS) continue;\n  const remote = REMOTE.test(text);\n  const onsite = ONSITE.test(text);\n  const ba = BUENOS_AIRES.test(text);\n  if (!remote && !ba) continue;            // not remote and not in Buenos Aires\n  if (!remote && onsite && !ba) continue;\n  kept.push({ json: { title: j.title, url: j.url, years: years.join(','), remote, buenosAires: ba } });\n}\n\nif (kept.length === 0) return [{ json: { title: '__none__' } }];\nreturn kept;"
+				"jsCode": "// Read the full description of every result and keep only remote roles\n// (or on-site/hybrid in Buenos Aires) asking for at most 4 years of experience.\nconst MAX_YEARS = 4;\nconst raw = [];\n$input.all().forEach(item => {\n  if (item.json.results) raw.push(...item.json.results.map(r => ({ title: r.title, url: r.url, text: r.raw_content || r.content || '' })));\n  if (item.json.data?.web) raw.push(...item.json.data.web.map(r => ({ title: r.title, url: r.url, text: r.markdown || r.description || '' })));\n});\n\nconst seen = new Set();\nconst jobs = raw.filter(j => j.url && !seen.has(j.url) && seen.add(j.url));\n\nconst SENIOR_TITLE = /\\b(senior|sr\\.?|lead|staff|principal|head|manager|director|architect|vp)\\b/i;\nconst REMOTE = /\\b(remote|remoto|remota|work from home|anywhere|distributed)\\b/i;\nconst ONSITE = /\\b(on-?site|onsite|hybrid|h[ií]brido|presencial|in[- ]office)\\b/i;\nconst BUENOS_AIRES = /buenos aires|\\bcaba\\b|\\bgba\\b/i;\n\n// Lowest year count of every \"N years of experience\" / \"N-M years\" requirement found\nfunction requiredYears(text) {\n  const found = [];\n  const re = /(\\d{1,2})\\s*(?:\\+|(?:-|–|to|a)\\s*\\d{1,2})?\\s*\\+?\\s*(?:years?|yrs?|a[ñn]os)/gi;\n  let m;\n  while ((m = re.exec(text))) {\n    const ctx = text.slice(Math.max(0, m.index - 80), m.index + m[0].length + 80);\n    if (/experien|exp\\.|background|proven|track record|hands-on/i.test(ctx)) found.push(Number(m[1]));\n  }\n  return found;\n}\n\n// Indeed country subdomains other than Argentina (pk.indeed.com, uk.indeed.com...) are noise\nconst FOREIGN_INDEED = /^https?:\\/\\/(?!www\\.|ar\\.)[a-z]{2}\\.indeed\\.com/i;\n\nconst kept = [];\nfor (const j of jobs) {\n  if (FOREIGN_INDEED.test(j.url)) continue;\n  const text = (j.title + '\\n' + j.text).slice(0, 60000);\n  if (SENIOR_TITLE.test(j.title)) continue;\n  if (/\\b(senior|sr\\.)\\s+(level|engineer|developer)/i.test(text.slice(0, 1500))) continue;\n  const years = requiredYears(text);\n  if (years.length && Math.min(...years) > MAX_YEARS) continue;\n  const remote = REMOTE.test(text);\n  const onsite = ONSITE.test(text);\n  const ba = BUENOS_AIRES.test(text);\n  if (!remote && !ba) continue;            // not remote and not in Buenos Aires\n  if (!remote && onsite && !ba) continue;\n  kept.push({ json: { title: j.title, url: j.url, years: years.join(','), remote, buenosAires: ba } });\n}\n\nif (kept.length === 0) return [{ json: { title: '__none__' } }];\nreturn kept;"
 			},
 			"type": "n8n-nodes-base.code",
 			"typeVersion": 2,
